@@ -1,0 +1,228 @@
+/******************************************************************************		
+ * $Id: html4nntp.css,v 1.8 2004/10/24 06:35:02 svanpo Exp $
+ *
+ * Authors: Stéphane Vanpoperynghe  (svanpoperynghe@toutprogrammer.com)
+ *          Terence Yim             (chtyim@gmail.com)
+ *
+ * Copyright 2004 Terence Yim, Stéphane Vanpoperynghe
+ ******************************************************************************
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA	        
+ ******************************************************************************/
+
+ /* General */
+body {
+	background-color: White;
+	color: Black;
+	font-family: Tahoma, Sans-Serif;
+	font-size: 12px;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+th {
+	background-color: #C1DFFA;
+}
+
+/* For html4nntp */
+
+/* Global styles */
+#html4nntp {
+	margin: 3px 30px 0px 30px;
+}
+
+#html4nntp img {
+	border: 0;
+}
+
+#html4nntp div.error {
+	font-size: 12px;
+	font-weight: bold;
+	color: Red;
+}
+
+#html4nntp div.nntp-usererror {
+	font-weight: bold;
+}
+
+/* html4nntp logo */
+#html4nntp div.logo {
+	float: right;
+	margin: 3px;
+	font-size: 10px;
+	text-align: center;
+}
+
+/* Forms */
+#html4nntp form  {
+	margin: 0;
+	padding: 0;
+}
+
+#html4nntp form  textarea {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+}
+
+#html4nntp form td.label, #html4nntp div.show-article td.label {
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+/* Table of contents */
+#html4nntp div.toc table.toc {
+	margin-left: 30px;
+	margin-right: 30px;
+	width: auto;
+}
+
+#html4nntp div.toc table.toc td.name {
+	width: 150px;
+	vertical-align: text-top;
+}
+
+#html4nntp div.toc table.toc td.msg {
+	width: 20px;
+	text-align: right;
+	padding-right: 5px;
+	vertical-align: text-top;
+}
+
+#html4nntp div.toc table.toc td.desc {
+	right: 200px;
+	vertical-align: text-top;
+}
+
+/* Main menu */
+#html4nntp ul.menu {
+	list-style: none;
+	margin: 0;
+	padding: 5px;
+}
+
+#html4nntp ul.menu li {
+	display: inline;
+}
+
+/* Headers list */
+#html4nntp table.headers {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#html4nntp table.headers th.list {
+	font-weight: bold;
+	font-size: 13px;
+	text-align: left;
+	padding: 0px 10px 0px 10px;
+	border: solid thin #9596FF;
+}
+
+#html4nntp table.headers th.list a {
+	color: Blue;
+}
+
+#html4nntp table.headers td.msg-title1, #html4nntp table.headers td.msg-mail1, #html4nntp table.headers td.msg-date1 {
+	white-space: nowrap;
+	background-color: White;
+	margin: 0;
+	padding: 0;
+}
+
+#html4nntp table.headers td.msg-title2, #html4nntp table.headers td.msg-mail2, #html4nntp table.headers td.msg-date2 {
+	white-space: nowrap;
+	background-color: #EAF6FF;
+	margin: 0;
+	padding: 0;
+}
+
+#html4nntp table.headers span.msg-title {
+	margin-left: 5px;
+}
+
+#html4nntp table.headers span.today  {
+	color: Red;
+}
+
+#html4nntp table.headers span.week  {
+	color: #00AA00;
+}
+
+/* Show article */
+#html4nntp div.show-article ul {
+	list-style: none;
+	margin: 0;
+	padding: 5px;
+	border: thin solid Black;
+	background-color: #EAF6FF;
+}
+
+#html4nntp div.show-article li span.label {
+	font-weight: bold;
+}
+
+#html4nntp div.show-article div.original-headers {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	margin-left: 15px;
+}
+
+#html4nntp div.show-article li#hide-headers {
+	display: none;
+}
+
+#html4nntp div.show-thread {
+	margin-top: 50px;
+}
+
+/* Pages numbers */
+#html4nntp div.pages {
+	text-align: center;
+	margin: 10px 0px 10px 0px;
+}
+
+/* W3C validators logos */
+#html4nntp ul.w3c-validate {
+	list-style: none;
+	margin: 20px 0px 0px 0px;
+	padding: 3px;
+	text-align: center;
+}
+
+#html4nntp ul.w3c-validate li {
+	display: inline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

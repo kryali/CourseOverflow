@@ -1,0 +1,1 @@
+Just a file for empty directories with CVS.
