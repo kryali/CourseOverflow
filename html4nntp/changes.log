@@ -1,0 +1,32 @@
+1.0.1 : fixes & features
+* feature: display PNG attachments
+* feature: add thread of the current message bellow the text of the message
+* fix don't display an error for empty feeds
+* fix display the error message if the post is rejected by the server
+* fix display an error if the main page filename is not set as $main_page
+* fix problem with http links followed by a comma in the text of the message displayed
+* fix problem for posting when user comes directly to the page with the text of the message (session problem)
+* fix bug in the email obfuscator
+* fix bug if the compose form is cancelled.
+
+1.0.0 : first public version
+* using CSS
+* using XHTML
+* encoding HTML entities
+* add a check box to save or not the name and the e-mail address
+* add a button to display or hide header of a message
+* email address encoding for the from field
+* add flag to permit or not posting of files
+* don't show a group if there doesn't exist
+* add a page with table off contents (grouped or not)
+* dates are translated
+* add a trace in header to log ip address of the poster
+* add JavaScript to submit the form with the groups combo box
+* add a test to verify if register_globals is off
+* fixed bug with the pagination on search
+* escape pattern for the search
+* display template before all exit to have all the content of a page
+* correct RSS Feed to display the text of a message
+* use the new feed with html4nntp.
+
+First version based on Web-News 1.6.0 (http://web-news.sourceforge.net/webnews.html)
