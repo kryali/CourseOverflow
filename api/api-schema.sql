@@ -1,3 +1,8 @@
+-- DATABASE INFORMATION
+-- dbname: courseov_api
+-- dbuser: courseov_dbuser
+-- dbuser password: courseoverflow
+
 -- Drop old versions
 --DROP TABLE Votes;
 --DROP TABLE Users;
