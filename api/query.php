@@ -44,13 +44,13 @@ if($action == "authenticate"){
 
 }else if($action == "subscribe_to_class"){
 
-	$class_name = cleanInput($_GET['class_name']);
+	$class_name = cleanInput($_GET['fully_qualified_class_name']);
 	$ret = subscribe_to_class($class_name);
 	outputBoolean("subscribe_to_class",$ret);
 
 }else if($action == "unsubscribe_from_class"){
 	
-	$class_name = cleanInput($_GET['class_name']);
+	$class_name = cleanInput($_GET['fully_qualified_class_name']);
 	$ret = unsubscribe_from_class($class_name);
 	outputBoolean("unsubscribe_from_class",$ret);
 
