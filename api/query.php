@@ -26,7 +26,8 @@ if($action == "authenticate"){
 }else if($action == "submit_vote"){
 
 	$message_id = cleanInput($_GET['message_id']);
-	$ret = submit_vote($message_id);
+	$direction = cleanInput($_GET['direction']);
+	$ret = submit_vote($message_id,$direction);
 	outputBoolean("submit_vote",$ret);
 
 }else if($action == "get_votes"){
