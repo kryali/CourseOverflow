@@ -6,14 +6,12 @@ require_once("query_helpers.php");
 $action = cleanInput($_GET['action']);
 
 if(empty($action)){
-	showError("No action provided.");
-	showHelp();
+	showHelp("No action provided.");
 	exit;
 }
 
 if($action != "authenticated" && !isset($_SESSION['auth'])){
-	showError("Not authenticated.");
-	showHelp();
+	showHelp("Not authenticated.");
 	exit;
 }
 
