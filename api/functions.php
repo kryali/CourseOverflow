@@ -9,7 +9,8 @@ function submit_vote(message_id){
 }
 
 function get_votes(message_id){
-    return 0;
+    $ret[0][0] = 0;
+    return $ret;
 }
 
 function get_reputation(email_address){
