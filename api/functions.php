@@ -68,8 +68,14 @@ function submit_vote($message_id, $positive){
 }
 
 function get_votes($message_id){
-    $ret = array();
-    return $ret;
+    
+    $query  = "SELECT * FROM Votes WHERE ";
+    $query .= "message_id = '" . mysql_real_escape_string($message_id) . "'";
+    $query .= ";";
+
+    $result = mysql_query($query);
+
+    return $result;
 }
 
 function get_reputation($email_address){
