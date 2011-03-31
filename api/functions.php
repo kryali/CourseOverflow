@@ -89,7 +89,7 @@ function get_votes($message_id){
 
 function get_reputation($email_address){
     
-    $query  = "SELECT Reputation FROM Users WHERE ";
+    $query  = "SELECT reputation FROM Users WHERE ";
     $query .= "email = '" . mysql_real_escape_string($email_address) . "'";
     $query .= ";";
 
@@ -99,6 +99,7 @@ function get_reputation($email_address){
         return -1;
 
     $value = mysql_fetch_assoc($result);
+    print_r($value);
 
     return $value["reputation"];
 }
