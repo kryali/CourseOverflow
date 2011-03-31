@@ -5,6 +5,12 @@ include("db_connect.php");
 function authenticate($email, $password){
     //TODO Authenticate with newsgroup
 
+    $query  = "INSERT INTO Users(email) Values(";
+    $query .= "'" . mysql_real_escape_string($email) . "'";
+    $query .= ");";
+
+    mysql_query($query);
+
     session_start();
     $_SESSION["email"] = $email;    
     
@@ -65,6 +71,8 @@ function submit_vote($message_id, $positive){
         return false;
 
     return true;
+
+    //TODO Update reputation
 }
 
 function get_votes($message_id){
@@ -79,20 +87,62 @@ function get_votes($message_id){
 }
 
 function get_reputation($email_address){
-    return 0;
+    
+    $query  = "SELECT Reputation FROM Users WHERE ";
+    $query .= "email = '" . mysql_real_escape_string($email_address) . "'";
+    $query .= ";";
+
+    $result = mysql_query($query);
+
+    if(!$result)
+        return -1;
+
+    $value = mysql_fetch_assoc($result);
+
+    return $value["reputation"];
 }
 
 function subscribe_to_class($class_name){
-    return false;
+
+    if(!isset($_SESSION["email"]))
+        return false;
+
+    $query  = "INSERT INTO Subscriptions Values(";
+    $query .= "'" . mysql_real_escape_string($_SESSION['email']) . "', ";
+    $query .= "'" . mysql_real_escape_string($class_name) . "'";
+    $query .= ");";
+
+    $result = mysql_query($query);
+
+    if(!$result)
+        return false;
+    return true;
 }
 
 function unsubscribe_from_class($class_name){
-    return false;
+
+    if(!isset($_SESSION["email"]))
+        return false;
+
+    $query  = "DELETE FROM Subscriptions WHERE ";
+    $query .= "email = '" . mysql_real_escape_string($_SESSION['email']) . "' AND ";
+    $query .= "subname = '" . mysql_real_escape_string($class_name) . "'";
+    $query .= ";";
+
+    $result = mysql_query($query);
+
+    if(!$result)
+        return false;
+    return true;
 }
 
 function get_subscriptions($email_address){
-    $ret = array();
-    return $ret;
+    $query  = "SELECT * FROM Subscriptions WHERE ";
+    $query .= "email = '" . mysql_real_escape_string($email_address) . "'";
+    $query .= ";";
+
+    $result = mysql_query($query);
+    return $result;
 }
 
 ?>
