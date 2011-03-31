@@ -12,7 +12,8 @@ function authenticate($email, $password){
     mysql_query($query);
 
     session_start();
-    $_SESSION["email"] = $email;    
+    $_SESSION["email"] = $email;
+    $_SESSION["auth"]  = true; 
     
     return true;
 }
