@@ -15,6 +15,9 @@ if($action != "authenticated" && !isset($_SESSION['auth'])){
 	exit;
 }
 
+echo "ACTION: " . $action . "<br>";
+exit();
+
 if($action == "authenticate"){
 	
 	$email = cleanInput($_POST['email']);
