@@ -27,7 +27,8 @@
 /*	This part configurate the server settings                     */
 /******************************************************************/
 	// NNTP Server setting
-	$nntp_server = "news.toutprogrammer.com";
+//	$nntp_server = "news.toutprogrammer.com";
+	$nntp_server = "localhost";
 	$user = "";
 	$pass = "";
 	
