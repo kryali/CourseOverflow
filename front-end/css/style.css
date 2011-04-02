@@ -1,0 +1,155 @@
+/* GLOBALS */
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	color: #333333;
+	text-decoration: none;
+}
+
+body{
+	background: #e9e9e9;
+    font-family: 'Museo300', 'Helvetica', 'Arial' ,sans-serif;
+	padding: 1em;
+	width: 900px;
+	margin: 0 auto;
+}
+
+
+@font-face {
+    font-family: 'Museo500';
+    src: url('../fonts/Museo 500/Museo500-Regular-webfont.eot');
+    src: url('../fonts/Museo 500/Museo500-Regular-webfont.eot?iefix') format('eot'),
+         url('../fonts/Museo 500/Museo500-Regular-webfont.woff') format('woff'),
+         url('../fonts/Museo 500/Museo500-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Museo 500/Museo500-Regular-webfont.svg#webfontQF7qPaga') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo300';
+    src: url('../fonts/Museo 300/Museo300-Regular-webfont.eot');
+    src: url('../fonts/Museo 300/Museo300-Regular-webfont.eot?iefix') format('eot'),
+         url('../fonts/Museo 300/Museo300-Regular-webfont.woff') format('woff'),
+         url('../fonts/Museo 300/Museo300-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Museo 300/Museo300-Regular-webfont.svg#webfontQF7qPaga') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* NON-HTML5 BROWSERS */
+header, section, article{
+	display: block;
+}
+
+/* HEADER */
+
+#logo{
+	font-size: 20pt;
+	float: left;
+}
+
+.thirty:hover{
+	color: #4b98b9;
+}
+
+.thirty {
+	font-size: 24pt;
+	color: #222222;
+	font-family: 'Museo500';
+}
+
+header{
+	/*padding: 1em;*/
+	height: 55px;
+}
+
+nav {
+	float: right;
+}
+
+nav ul{}
+
+nav li{
+	display: block;
+	margin: .3em .4em;
+	float: right;
+}
+
+nav li a {
+	background: #5c5c5c;
+	padding: .3em .5em;
+	color: white;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+nav li a:hover{
+	background: #4b98b9;
+}
+
+/* SIDEBAR */
+
+#sidebar {
+	float: left;
+	font-size: 10pt;
+	position: relative;
+	z-index: 1000;
+}
+
+#sidebar li{
+	margin-bottom: 1em;
+}
+
+#sidebar li a{
+	padding: .4em 2em;
+	color: #979797;
+}
+
+#sidebar li a:hover{
+	color: #333333;
+}
+
+#sidebar li a.sidebar-selected{
+	background: white;
+	border: 1px solid #c2c2c2;
+	color: #333333;
+	border-right: none;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+a.sidebar-selected{
+	color: #e9e9e9;	
+}
+
+/* CONTENT */
+
+
+section {
+	position: relative;
+	padding: 1em;
+	margin-left: -2px;
+	float: left;
+	background: white;
+	border: 1px solid #c2c2c2;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 745px;
+	z-index: 0;
+}
+
+section a{
+	color: #4b98b9;
+}
+
+section a:hover{
+	color: #f49d31;
+}
