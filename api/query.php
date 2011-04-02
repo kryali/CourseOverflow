@@ -20,11 +20,6 @@ if($action == "authenticate"){
 	$email = cleanInput($_POST['username']);
 	$password = cleanInput($_POST['password']);
     
-    echo $email . "<br>";
-    echo $password;
-
-    exit();
-
     $ret = authenticate($email,$password);
 	
 	outputBoolean("authenticate",$ret);
