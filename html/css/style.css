@@ -139,6 +139,7 @@ a.sidebar-selected{
     border-radius: 5px;
     -moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	float: right;
 }
 
 .searchfield {
@@ -175,7 +176,17 @@ a.sidebar-selected{
 	cursor: hand;
 }
 
-/* CONTENT */
+ul#subheader {
+	width: 500px;
+}
+#subheader li {
+	display: inline;
+}
+
+header {
+	border-bottom: 1px dotted #cccccc;
+}
+/* DISCUSSIONS */
 section {
 	position: relative;
 	padding: 1em;
