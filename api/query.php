@@ -10,7 +10,7 @@ if(empty($action)){
 	exit;
 }
 
-if($action != "authenticated" && !isset($_SESSION['auth'])){
+if($action != "authenticate" && !isset($_SESSION['auth'])){
 	showHelp("Not authenticated.");
 	exit;
 }
@@ -19,7 +19,11 @@ if($action == "authenticate"){
 	
 	$email = cleanInput($_POST['email']);
 	$password = cleanInput($_POST['password']);
-	$ret = authenticate($email,$password);
+    
+    echo $email . "<br>";
+    echo $password;
+
+    $ret = authenticate($email,$password);
 	
 	outputBoolean("authenticate",$ret);
 	
