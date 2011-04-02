@@ -1,9 +1,13 @@
 <?php
 
 include("db_connect.php");
+include("html4nntp/nntp.php");
+include("./api_config.php");
 
 function authenticate($email, $password){
-    //TODO Authenticate with newsgroup
+    
+    if(!verify_login($email, $password))
+        return false;
 
     $query  = "INSERT INTO Users(email) Values(";
     $query .= "'" . mysql_real_escape_string($email) . "'";
