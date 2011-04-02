@@ -100,7 +100,7 @@ nav li a:hover{
 }
 
 #sidebar li{
-	margin-bottom: 1em;
+	margin-top: 1em;
 }
 
 #sidebar li a{
@@ -236,10 +236,10 @@ section {
 	z-index: 0;
 }
 
-article a{
+#topic-list a{
 	color: #4b98b9;
 }
 
-article a:hover{
+#topic-list a:hover{
 	color: #f49d31;
 }
