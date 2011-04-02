@@ -42,14 +42,14 @@
 	$session_name = "html4nntp";
 
 	// List of subscribed newsgroups
-	$newsgroups_list = array("fr.*","test");
+	$newsgroups_list = array("*");
 	$default_group = "test";
 
 	// Group or not group newsgroups on the table of contents
 	$group_newsgroups = true;
 	
 	// Groups defined on the table of contents (no wildcard here)
-	$groups_toc = array("fr.lang", "fr.livres");
+	$groups_toc = array("class");
 	
 	// Display or not the table of contents
 	$display_toc = true;
