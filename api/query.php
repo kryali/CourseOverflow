@@ -23,6 +23,8 @@ if($action == "authenticate"){
     echo $email . "<br>";
     echo $password;
 
+    exit();
+
     $ret = authenticate($email,$password);
 	
 	outputBoolean("authenticate",$ret);
