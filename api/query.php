@@ -10,13 +10,10 @@ if(empty($action)){
 	exit;
 }
 
-if($action != "authenticated" && !isset($_SESSION['auth'])){
+if($action != "authenticate" && !isset($_SESSION['auth'])){
 	showHelp("Not authenticated.");
 	exit;
 }
-
-echo "ACTION: " . $action . "<br>";
-exit();
 
 if($action == "authenticate"){
 	
@@ -25,8 +22,6 @@ if($action == "authenticate"){
     
     echo $email . "<br>";
     echo $password;
-
-    exit();
 
     $ret = authenticate($email,$password);
 	
