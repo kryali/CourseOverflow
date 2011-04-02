@@ -150,6 +150,8 @@ function get_subscriptions($email_address){
     return $result;
 }
 
-authenticate("jkaczma2@illinois.edu", "fakepassword");
+if(!authenticate("jkaczma2@illinois.edu", "fakepassword")){
+    echo "AUTH FAILED";
+}
 
 ?>
