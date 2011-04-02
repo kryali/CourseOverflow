@@ -17,8 +17,8 @@ if($action != "authenticated" && !isset($_SESSION['auth'])){
 
 if($action == "authenticate"){
 	
-	$email = cleanInput($_GET['email']);
-	$password = cleanInput($_GET['password']);
+	$email = cleanInput($_POST['email']);
+	$password = cleanInput($_POST['password']);
 	$ret = authenticate($email,$password);
 	
 	outputBoolean("authenticate",$ret);
