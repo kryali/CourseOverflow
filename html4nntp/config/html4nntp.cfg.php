@@ -87,7 +87,7 @@
 
 	// 	Default language
 	//$text_ini = "config/messages_en_us.ini";
-	$text_ini = "config/messages_fr_fr.ini";
+	$text_ini = "config/messages_en_us.ini";
 
 	$locale_list = array("en_us" => "English (US)",
 						"fr_fr" => "Français (FR)",
