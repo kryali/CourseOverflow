@@ -64,7 +64,7 @@
 	// auth_level = 1  ------  No need to perform authentication
 	// auth_level = 2  ------  Perform authentication only when posting message
 	// auth_level = 3  ------  Perform authentication in any operation
-	$auth_level = 1;
+	$auth_level = 3;
 
 	// The URL of the page shown after user logout
 	// It can be a relative or absolute address
