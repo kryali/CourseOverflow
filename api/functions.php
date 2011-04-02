@@ -6,7 +6,8 @@ include("./api_config.php");
 
 function authenticate($email, $password){
     
-    verify_login($email, $password);
+    if(!verify_login($email, $password))
+        return false;
 
     $query  = "INSERT INTO Users(email) Values(";
     $query .= "'" . mysql_real_escape_string($email) . "'";
