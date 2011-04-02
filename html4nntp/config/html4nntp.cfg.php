@@ -42,14 +42,14 @@
 	$session_name = "html4nntp";
 
 	// List of subscribed newsgroups
-	$newsgroups_list = array("fr.*","test");
+	$newsgroups_list = array("*");
 	$default_group = "test";
 
 	// Group or not group newsgroups on the table of contents
 	$group_newsgroups = true;
 	
 	// Groups defined on the table of contents (no wildcard here)
-	$groups_toc = array("fr.lang", "fr.livres");
+	$groups_toc = array("class");
 	
 	// Display or not the table of contents
 	$display_toc = true;
@@ -64,7 +64,7 @@
 	// auth_level = 1  ------  No need to perform authentication
 	// auth_level = 2  ------  Perform authentication only when posting message
 	// auth_level = 3  ------  Perform authentication in any operation
-	$auth_level = 1;
+	$auth_level = 3;
 
 	// The URL of the page shown after user logout
 	// It can be a relative or absolute address
@@ -87,7 +87,7 @@
 
 	// 	Default language
 	//$text_ini = "config/messages_en_us.ini";
-	$text_ini = "config/messages_fr_fr.ini";
+	$text_ini = "config/messages_en_us.ini";
 
 	$locale_list = array("en_us" => "English (US)",
 						"fr_fr" => "Français (FR)",
