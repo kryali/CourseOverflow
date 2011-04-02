@@ -1,9 +1,12 @@
 <?php
 
 include("db_connect.php");
+include("html4nntp/nntp.php");
+include("./api_config.php");
 
 function authenticate($email, $password){
-    //TODO Authenticate with newsgroup
+    
+    verify_login($email, $password);
 
     $query  = "INSERT INTO Users(email) Values(";
     $query .= "'" . mysql_real_escape_string($email) . "'";
@@ -146,5 +149,7 @@ function get_subscriptions($email_address){
     $result = mysql_query($query);
     return $result;
 }
+
+authenticate("jkaczma2@illinois.edu", "fakepassword");
 
 ?>
