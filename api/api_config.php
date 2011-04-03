@@ -1,6 +1,6 @@
 <?php
 
-$nntp_server  = "news.cs.illinois.edu";
+$nntp_server  = "localhost";
 $proxy_server = "";
 $proxy_port   = "";
 $proxy_user   = "";
