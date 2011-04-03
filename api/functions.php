@@ -99,7 +99,7 @@ function get_votes($message_id){
     }
     
     $arr = array();
-    for($ind = 0; $ind < $num_results); $ind++){
+    for($ind = 0; $ind < $num_results; $ind++){
 	$row = mysql_fetch_array($result);
 	$arr[] = $row;
     }
