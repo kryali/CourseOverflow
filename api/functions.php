@@ -60,6 +60,9 @@ function submit_vote($message_id, $positive){
         if(!$result)
             return false;
     }
+    // update reputation
+    $author = get_author($message_id);
+    mysql_query("UPDATE Users SET reputation = reputation + 1 WHERE netid = '$author' LIMIT 1");	
 
     //Insert the new vote
     $query  = "INSERT INTO Votes Values( ";
@@ -79,7 +82,6 @@ function submit_vote($message_id, $positive){
 
     return true;
 
-    //TODO Update reputation
 }
 
 function get_votes($message_id){

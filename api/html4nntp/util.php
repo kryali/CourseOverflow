@@ -348,6 +348,33 @@ function verify_login($username, $password) {
 		return FALSE;
 	}
 }
+
+// ADDED BY BRYAN MISHKIN
+function get_author($message_id) {
+	global $nntp_server;
+	global $proxy_server;
+	global $proxy_port;
+	global $proxy_user;
+	global $proxy_pass;
+	$username = $_SESSION["username"];
+	$password = $_SESSION["password"];
+
+	if (strlen($username) > 0) {	// Won't allow empty user name
+		// Create a dummy connection for authentication
+		$nntp = new NNTP($nntp_server, $username, $password, $proxy_server, $proxy_port, $proxy_user, $proxy_pass);
+		$nntp->connect();
+
+		$msg = $nntp->get_article($message_id);
+		print_r($msg);
+		
+		$nntp->quit();
+		
+		return $msg;
+	} else {
+		return null;
+	}
+}
+
 	
 function construct_url($name) {
 	$result = parse_url($name);
