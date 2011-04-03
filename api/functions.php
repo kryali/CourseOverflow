@@ -62,6 +62,7 @@ function submit_vote($message_id, $positive){
     }
     // update reputation
     $author = get_author($message_id);
+    mysql_query("INSERT INTO Users(netid) VALUES ('$author')");
     echo "<p>Author of $message_id is $author</p>";
     mysql_query("UPDATE Users SET reputation = reputation + 1 WHERE netid = '$author' LIMIT 1");	
 
