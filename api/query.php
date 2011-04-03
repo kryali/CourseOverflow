@@ -4,13 +4,13 @@ require_once("query_helpers.php");
 
 // GET variables
 $action = cleanInput($_GET['action']);
+session_start();
 
 if(empty($action)){
 	showHelp("No action provided.");
 	exit;
 }
 
-session_start();
 
 if($action != "authenticate" && !isset($_SESSION['auth'])){
 	outputBoolean($action,false,"Not authenticated.");
