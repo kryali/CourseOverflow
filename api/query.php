@@ -33,7 +33,8 @@ if($action == "authenticate"){
 	if(empty($direction)){
 		$direction = true;
 	}
-	$ret = submit_vote($message_id,$direction);
+
+	$ret = submit_vote($message_id,(bool)$direction);
 	outputBoolean("submit_vote",$ret);
 
 }else if($action == "get_votes"){
