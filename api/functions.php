@@ -153,13 +153,13 @@ function unsubscribe_from_class($class_name){
 
     $result = mysql_query($query);
 
-    if(!$result)
+    if(!$result || mysql_affected_rows($result) == 0)
         return false;
     return true;
 }
 
 function get_subscriptions($netid_address){
-    $query  = "SELECT * FROM Subscriptions WHERE ";
+    $query  = "SELECT subname FROM Subscriptions WHERE ";
     $query .= "netid = '" . mysql_real_escape_string($netid_address) . "'";
     $query .= ";";
 
