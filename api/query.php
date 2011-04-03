@@ -30,6 +30,9 @@ if($action == "authenticate"){
 
 	$message_id = cleanInput($_GET['message_id']);
 	$direction = cleanInput($_GET['direction']);
+	if(empty($direction)){
+		$direction = true;
+	}
 	$ret = submit_vote($message_id,$direction);
 	outputBoolean("submit_vote",$ret);
 
