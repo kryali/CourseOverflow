@@ -153,7 +153,7 @@ function unsubscribe_from_class($class_name){
 
     $result = mysql_query($query);
 
-    if(!$result || mysql_affected_rows($result) == 0)
+    if(!$result || mysql_affected_rows() == 0)
         return false;
     return true;
 }
