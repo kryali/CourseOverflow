@@ -24,8 +24,8 @@ function showHelp($error)
 	echo '<p id="desc">Plug your newsgroup reader into our API to add support for voting, reputations, and remembering user subscriptions.</p>';
 	
 	echo '<table>';
-	echo '<tr><th>action</th><th>return</th><th>param1</th><th>param2</th></tr>';
-	echo '<tr><td>authenticate</td><td>bool</td><td>str - email</td><td>str - password</td></tr>';
+	echo '<tr><th>action</th><th>return</th><th>param1 (GET)</th><th>param2 (GET)</th></tr>';
+	echo '<tr><td>authenticate</td><td>bool</td><td>str - email (POST)</td><td>str - password (POST)</td></tr>';
 	echo '<tr><td>submit_vote</td><td>bool</td><td>str - message_id</td><td>bool - direction</td></tr>';
 	echo '<tr><td>get_votes</td><td>array - list of votes on a post</td><td>str - message_id</td><td>&nbsp;</td></tr>';
 	echo '<tr><td>get_reputation</td><td>int - reputation of a user</td><td>str - email</td><td>&nbsp;</td></tr>';
