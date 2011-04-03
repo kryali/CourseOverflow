@@ -11,7 +11,13 @@ function showHelp($error)
 	if(!empty($error)){
 		echo '<p><span class="error">Error:</span> '.$error.'</p><br />';
 	}
-	
+
+	echo '<form method="post" action="?action=authenticate">';
+	echo '<p><input type="email" name="email" id="email" /></p>';
+	echo '<p><input type="password" name="password" id="password" /></p>';
+	echo '<p><input type="submit" /></p>';
+	echo '</form>';
+
 	echo '<div id="pagetitle"><h3>'.$title.'</h3></div>';
 	
 	echo '<p id="desc">Plug your newsgroup reader into our API to add support for voting, reputations, and remembering user subscriptions.</p>';
