@@ -15,7 +15,7 @@ function showHelp($error)
 	echo '<form method="post" action="?action=authenticate">';
 	echo '<h3>Quick Login</h3>';
 	if(isset($_SESSION["netid"]) && isset($_SESSION['auth'])){
-		echo '<p(currently logged in as '.$_SESSION['netid'].')></p>';
+		echo '<p>(currently logged in as '.$_SESSION['netid'].')</p>';
 	}
 	echo '<p><input type="text" name="netid" id="netid" placeholder="NetID" /></p>';
 	echo '<p><input type="password" name="password" id="password" placeholder="Password" /></p>';
