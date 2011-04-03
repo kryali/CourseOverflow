@@ -43,16 +43,18 @@ function outputResults($action,$obj)
 	$resp["action"] = $action;
 	$resp["return"] = true;
 	$resp["response"] = $obj;
+	$resp["msg"] = null;
 	echo json_encode($resp);
 	exit;
 }
 
-function outputBoolean($action,$bool)
+function outputBoolean($action,$bool,$msg = null)
 {
 	$resp = array();
 	$resp["action"] = $action;
 	$resp["return"] = $bool;
 	$resp["response"] = null;
+	$resp["msg"] = $msg;
 	echo json_encode($resp);
 	exit;
 }
@@ -63,6 +65,7 @@ function outputSuccess($action)
 	$resp["action"] = $action;
 	$resp["return"] = true;
 	$resp["response"] = null;
+	$resp["msg"] = null;
 	echo json_encode($resp);
 	exit;
 }
@@ -73,6 +76,7 @@ function outputFailure($action)
 	$resp["action"] = $action;
 	$resp["return"] = false;
 	$resp["response"] = null;
+	$resp["msg"] = null;
 	echo json_encode($resp);
 	exit;
 }
