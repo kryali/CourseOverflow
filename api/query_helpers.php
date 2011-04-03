@@ -13,9 +13,11 @@ function showHelp($error)
 	}
 
 	echo '<form method="post" action="?action=authenticate">';
-	echo '<p><input type="email" name="email" id="email" /></p>';
-	echo '<p><input type="password" name="password" id="password" /></p>';
-	echo '<p><input type="submit" /></p>';
+	echo '<h3>Quick Login</h3>';
+	echo '<p>Email <input type="email" name="email" id="email" /></p>';
+	echo '<p>Password <input type="password" name="password" id="password" /></p>';
+	echo '<p><input type="Authenticate" /></p>';
+	echo '<h3>Quick Login</h3>';
 	echo '</form>';
 
 	echo '<div id="pagetitle"><h3>'.$title.'</h3></div>';
