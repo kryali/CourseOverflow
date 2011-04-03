@@ -14,9 +14,9 @@ function showHelp($error)
 
 	echo '<form method="post" action="?action=authenticate">';
 	echo '<h3>Quick Login</h3>';
-	echo '<p>Email <input type="email" name="email" id="email" /></p>';
-	echo '<p>Password <input type="password" name="password" id="password" /></p>';
-	echo '<p><input type="Authenticate" /></p>';
+	echo '<p><input type="email" name="email" id="email" placeholder="Email" /></p>';
+	echo '<p><input type="password" name="password" id="password" placeholder="Password" /></p>';
+	echo '<p><input type="submit" value="Authenticate" /></p>';
 	echo '<h3>Quick Login</h3>';
 	echo '</form>';
 
