@@ -369,7 +369,10 @@ function get_author($message_id) {
 		
 		$nntp->quit();
 		
-		return $msg->{"main_header"}->{"from"}->{"email"};
+		$main_header = $msg->{"main_header"};
+		$from = $main_header["from"];
+		$email = $from["email"];
+		return $email;
 	} else {
 		return null;
 	}
