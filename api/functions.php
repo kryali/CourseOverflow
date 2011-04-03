@@ -4,19 +4,20 @@ include("db_connect.php");
 include("html4nntp/nntp.php");
 include("./api_config.php");
 
-function authenticate($email, $password){
+function authenticate($netid, $password){
     
-    if(!verify_login($email, $password))
+    if(!verify_login($netid, $password))
         return false;
 
-    $query  = "INSERT INTO Users(email) Values(";
-    $query .= "'" . mysql_real_escape_string($email) . "'";
+    $query  = "INSERT INTO Users(netid) Values(";
+    $query .= "'" . mysql_real_escape_string($netid) . "'";
     $query .= ");";
 
     mysql_query($query);
 
     session_start();
-    $_SESSION["email"] = $email;
+    $_SESSION["netid"] = $netid;
+    $_SESSION["password"] = $password;
     $_SESSION["auth"]  = true; 
     
     return true;
@@ -24,12 +25,12 @@ function authenticate($email, $password){
 
 function submit_vote($message_id, $positive){
 
-    if(!isset($_SESSION["email"]))
+    if(!isset($_SESSION["netid"]))
         return false;
 
     //Check for duplicate votes
     $query  = "SELECT * FROM Votes WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($_SESSION["email"]) . "' AND ";
+    $query .= "netid = '" . mysql_real_escape_string($_SESSION["netid"]) . "' AND ";
     $query .= "message_id = '" . mysql_real_escape_string($message_id) . "'";
     $query .= ";";
 
@@ -49,7 +50,7 @@ function submit_vote($message_id, $positive){
             return false;
 
         $query  = "DELETE FROM Votes WHERE ";
-        $query .= "email = '" . mysql_real_escape_string($_SESSION["email"]) . "' AND ";
+        $query .= "netid = '" . mysql_real_escape_string($_SESSION["netid"]) . "' AND ";
         $query .= "message_id = '" . mysql_real_escape_string($message_id) . "'";
         $query .= ";";
         
@@ -61,7 +62,7 @@ function submit_vote($message_id, $positive){
 
     //Insert the new vote
     $query  = "INSERT INTO Votes Values( ";
-    $query .= "'" . mysql_real_escape_string($_SESSION["email"]) . "', ";
+    $query .= "'" . mysql_real_escape_string($_SESSION["netid"]) . "', ";
     $query .= "'" . mysql_real_escape_string($message_id) . "', ";
 
     if($positive)
@@ -91,10 +92,10 @@ function get_votes($message_id){
     return $result;
 }
 
-function get_reputation($email_address){
+function get_reputation($netid_address){
     
     $query  = "SELECT reputation FROM Users WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($email_address) . "'";
+    $query .= "netid = '" . mysql_real_escape_string($netid_address) . "'";
     $query .= ";";
 
     $result = mysql_query($query);
@@ -110,11 +111,11 @@ function get_reputation($email_address){
 
 function subscribe_to_class($class_name){
 
-    if(!isset($_SESSION["email"]))
+    if(!isset($_SESSION["netid"]))
         return false;
 
     $query  = "INSERT INTO Subscriptions Values(";
-    $query .= "'" . mysql_real_escape_string($_SESSION['email']) . "', ";
+    $query .= "'" . mysql_real_escape_string($_SESSION['netid']) . "', ";
     $query .= "'" . mysql_real_escape_string($class_name) . "'";
     $query .= ");";
 
@@ -127,11 +128,11 @@ function subscribe_to_class($class_name){
 
 function unsubscribe_from_class($class_name){
 
-    if(!isset($_SESSION["email"]))
+    if(!isset($_SESSION["netid"]))
         return false;
 
     $query  = "DELETE FROM Subscriptions WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($_SESSION['email']) . "' AND ";
+    $query .= "netid = '" . mysql_real_escape_string($_SESSION['netid']) . "' AND ";
     $query .= "subname = '" . mysql_real_escape_string($class_name) . "'";
     $query .= ";";
 
@@ -142,9 +143,9 @@ function unsubscribe_from_class($class_name){
     return true;
 }
 
-function get_subscriptions($email_address){
+function get_subscriptions($netid_address){
     $query  = "SELECT * FROM Subscriptions WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($email_address) . "'";
+    $query .= "netid = '" . mysql_real_escape_string($netid_address) . "'";
     $query .= ";";
 
     $result = mysql_query($query);

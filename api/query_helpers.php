@@ -14,7 +14,7 @@ function showHelp($error)
 
 	echo '<form method="post" action="?action=authenticate">';
 	echo '<h3>Quick Login</h3>';
-	echo '<p><input type="text" name="email" id="email" placeholder="Email" /></p>';
+	echo '<p><input type="text" name="netid" id="netid" placeholder="NetID" /></p>';
 	echo '<p><input type="password" name="password" id="password" placeholder="Password" /></p>';
 	echo '<p><input type="submit" value="Authenticate" /></p>';
 	echo '</form>';
@@ -25,13 +25,13 @@ function showHelp($error)
 	
 	echo '<table>';
 	echo '<tr><th>action</th><th>return</th><th>param1 (GET)</th><th>param2 (GET)</th></tr>';
-	echo '<tr><td>authenticate</td><td>bool</td><td>str - email (POST)</td><td>str - password (POST)</td></tr>';
+	echo '<tr><td>authenticate</td><td>bool</td><td>str - netid (POST)</td><td>str - password (POST)</td></tr>';
 	echo '<tr><td>submit_vote</td><td>bool</td><td>str - message_id</td><td>bool - direction</td></tr>';
 	echo '<tr><td>get_votes</td><td>array - list of votes on a post</td><td>str - message_id</td><td>&nbsp;</td></tr>';
-	echo '<tr><td>get_reputation</td><td>int - reputation of a user</td><td>str - email</td><td>&nbsp;</td></tr>';
+	echo '<tr><td>get_reputation</td><td>int - reputation of a user</td><td>str - netid</td><td>&nbsp;</td></tr>';
 	echo '<tr><td>subscribe_to_class</td><td>bool</td><td>str - fully_qualified_class_name</td><td>&nbsp;</td></tr>';
 	echo '<tr><td>unsubscribe_from_class</td><td>bool</td><td>str - fully_qualified_class_name</td><td>&nbsp;</td></tr>';
-	echo '<tr><td>get_subscriptions</td><td>array - list of groups that a user is subscribed to</td><td>str - email</td><td>&nbsp;</td></tr>';
+	echo '<tr><td>get_subscriptions</td><td>array - list of groups that a user is subscribed to</td><td>str - netid</td><td>&nbsp;</td></tr>';
 	echo '</table>';
 	
 	echo '</body></html>';
