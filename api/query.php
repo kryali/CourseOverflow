@@ -63,7 +63,7 @@ if($action == "authenticate"){
 	$subscriptions = get_subscriptions($netid);
 	outputResults("get_subscriptions",$subscriptions);
 }else{
-	showHelp("Bad action provided.");
+	outputBoolean($action,false,"Invalid action.");
 	exit;
 }
 
