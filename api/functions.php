@@ -164,7 +164,22 @@ function get_subscriptions($netid_address){
     $query .= ";";
 
     $result = mysql_query($query);
-    return $result;
+    if(!$result){
+	return null;
+    }
+ 
+    $num_results = mysql_num_rows($result);
+    if($num_results == 0){
+	return null;
+    }
+
+    $arr = array();
+    for($ind = 0; $ind < $num_results; $ind++){
+	$row = mysql_fetch_array($result);
+	$arr[] = $row;
+    }
+
+    return $arr;
 }
 
 ?>
