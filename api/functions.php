@@ -6,8 +6,10 @@ include("./api_config.php");
 
 function authenticate($netid, $password){
     
-    if(!verify_login($netid, $password))
-        return false;
+    if(!verify_login($netid, $password)){
+        session_destroy();
+	return false;
+    }
 
     $query  = "INSERT INTO Users(netid) Values(";
     $query .= "'" . mysql_real_escape_string($netid) . "'";
