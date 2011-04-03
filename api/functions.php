@@ -73,6 +73,7 @@ function submit_vote($message_id, $positive){
 
     $query .= ");";
 
+	echo $query;
     $result = mysql_query($query);
     if(!$result)
         return false;
