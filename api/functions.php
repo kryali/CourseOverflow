@@ -84,7 +84,7 @@ function submit_vote($message_id, $positive){
 
 function get_votes($message_id){
     
-    $query  = "SELECT * FROM Votes WHERE ";
+    $query  = "SELECT netid,positive as direction FROM Votes WHERE ";
     $query .= "message_id = '" . mysql_real_escape_string($message_id) . "'";
     $query .= ";";
 
