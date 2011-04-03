@@ -73,7 +73,6 @@ function submit_vote($message_id, $positive){
 
     $query .= ");";
 
-	echo $query;
     $result = mysql_query($query);
     if(!$result)
         return false;
@@ -90,8 +89,23 @@ function get_votes($message_id){
     $query .= ";";
 
     $result = mysql_query($query);
+    if(!$result){
+	return NULL;
+    }
 
-    return $result;
+    $num_results = mysql_num_rows($result);
+    if($num_results == 0){
+	return NULL;
+    }
+    
+    $arr = array();
+    for($ind = 0; $ind < $num_results); $ind++){
+	$row = mysql_fetch_array($result);
+	$arr[] = $row;
+    }
+
+
+    return $arr;
 }
 
 function get_reputation($netid_address){
