@@ -356,6 +356,7 @@ function get_author($message_id) {
 	global $proxy_port;
 	global $proxy_user;
 	global $proxy_pass;
+	global $_SESSION;
 	$username = $_SESSION["username"];
 	$password = $_SESSION["password"];
 
