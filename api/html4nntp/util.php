@@ -350,7 +350,7 @@ function verify_login($username, $password) {
 }
 
 // ADDED BY BRYAN MISHKIN
-function get_author($message_id) {
+function get_author_email($message_id) {
 	global $nntp_server;
 	global $proxy_server;
 	global $proxy_port;
@@ -360,12 +360,10 @@ function get_author($message_id) {
 	$password = $_SESSION["password"];
 
 	if (strlen($username) > 0) {	// Won't allow empty user name
-		// Create a dummy connection for authentication
 		$nntp = new NNTP($nntp_server, $username, $password, $proxy_server, $proxy_port, $proxy_user, $proxy_pass);
 		$nntp->connect();
 
 		$msg = $nntp->get_article($message_id);
-		print_r($msg);
 		
 		$nntp->quit();
 		
