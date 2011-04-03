@@ -99,11 +99,10 @@ function get_reputation($netid_address){
 
     $result = mysql_query($query);
 
-    if(!$result)
+    if(!$result || mysql_num_rows($result) == 0)
         return -1;
 
     $value = mysql_fetch_assoc($result);
-    print_r($value);
 
     return $value["reputation"];
 }

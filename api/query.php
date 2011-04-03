@@ -62,6 +62,9 @@ if($action == "authenticate"){
 	$netid = cleanInput($_GET['netid']);
 	$subscriptions = get_subscriptions($netid);
 	outputResults("get_subscriptions",$subscriptions);
+}else{
+	showHelp("Bad action provided.");
+	exit;
 }
 
 ?>
