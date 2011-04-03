@@ -15,7 +15,6 @@ function authenticate($netid, $password){
 
     mysql_query($query);
 
-    session_start();
     $_SESSION["netid"] = $netid;
     $_SESSION["password"] = $password;
     $_SESSION["auth"]  = true; 

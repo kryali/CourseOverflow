@@ -10,6 +10,8 @@ if(empty($action)){
 	exit;
 }
 
+session_start();
+
 if($action != "authenticate" && !isset($_SESSION['auth'])){
 	showHelp("Not authenticated.");
 	exit;
