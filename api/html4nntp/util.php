@@ -359,6 +359,7 @@ function get_author($message_id) {
 	$username = $_SESSION["username"];
 	$password = $_SESSION["password"];
 
+	print "<p>username is $username</p>";
 	if (strlen($username) > 0) {	// Won't allow empty user name
 		// Create a dummy connection for authentication
 		$nntp = new NNTP($nntp_server, $username, $password, $proxy_server, $proxy_port, $proxy_user, $proxy_pass);
