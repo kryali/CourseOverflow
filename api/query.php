@@ -17,10 +17,10 @@ if($action != "authenticate" && !isset($_SESSION['auth'])){
 
 if($action == "authenticate"){
 	
-	$email = cleanInput($_POST['username']);
+	$email = cleanInput($_POST['email']);
 	$password = cleanInput($_POST['password']);
     
-    $ret = authenticate($email,$password);
+    	$ret = authenticate($email,$password);
 	
 	outputBoolean("authenticate",$ret);
 	
