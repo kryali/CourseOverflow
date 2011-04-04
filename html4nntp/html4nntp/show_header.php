@@ -298,7 +298,7 @@
 			<a href="<?=basename($_SERVER["SCRIPT_NAME"]) ?>?renew=0&amp;sort=0"><?=$messages_ini["text"]["subject"] ?></a>
 			<?php if ($_SESSION["sort_by"] == 0) echo "&nbsp;<img src=\"$arrow_img\" alt=\"*\" />"; ?>
 <?php } else { ?>
-			<?=$messages_ini["text"]["subject"] ?>
+			<?="(test)".$messages_ini["text"]["subject"] ?>
 <?php } ?>
 		</th>
 		<th width="23%" class="list">
