@@ -12,16 +12,6 @@ function showHelp($error)
 		echo '<p><span class="error">Error:</span> '.$error.'</p><br />';
 	}
 
-	echo '<form method="post" action="?action=authenticate">';
-	echo '<h3>Quick Login</h3>';
-	if(isset($_SESSION["netid"])){
-		echo '<p>(currently logged in as '.$_SESSION['netid'].')</p>';
-	}
-	echo '<p><input type="text" name="netid" id="netid" placeholder="NetID" /></p>';
-	echo '<p><input type="password" name="password" id="password" placeholder="Password" /></p>';
-	echo '<p><input type="submit" value="Authenticate" /></p>';
-	echo '</form>';
-
 	echo '<div id="pagetitle"><h3>'.$title.'</h3></div>';
 	
 	echo '<p id="desc">Plug your newsgroup reader into our API to add support for voting, reputations, and remembering user subscriptions.</p>';
@@ -37,6 +27,17 @@ function showHelp($error)
 	echo '<tr><td>get_subscriptions</td><td>array - list of groups that a user is subscribed to</td><td>str - netid</td><td>&nbsp;</td></tr>';
 	echo '</table>';
 	
+	echo '<form method="post" action="?action=authenticate">';
+	echo '<h3>Quick Login</h3>';
+	if(isset($_SESSION["netid"])){
+		echo '<p>(currently logged in as '.$_SESSION['netid'].')</p>';
+	}
+	echo '<p><input type="text" name="netid" id="netid" placeholder="NetID" /></p>';
+	echo '<p><input type="password" name="password" id="password" placeholder="Password" /></p>';
+	echo '<p><input type="submit" value="Authenticate" /></p>';
+	echo '</form>';
+
+
 	echo '</body></html>';
 }
 
