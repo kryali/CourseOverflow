@@ -23,11 +23,6 @@ if(jQuery){
 				//console.log(inject);
 				$('#topic-list').prepend(inject);
 				$( this ).dialog( "close" );
-				$('a#top').each(function(index){ 
-					$(this).click(function(){	
-						this.children[0].innerHTML=(parseInt(this.children[0].innerHTML)+1);	
-					});
-				});
 			}
 		}
 	});
