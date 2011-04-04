@@ -428,7 +428,7 @@
 			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&password=".$pass."&message_id=".$message_id);
 			$voteCount = count($json->{"response"});
 
-			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&author_netid=".$author_netid);
+			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&their_netid=".$author_netid);
 			$authorRep = $json->{"response"};
 			if($authorRep == null){
 				$authorRep = 0;
