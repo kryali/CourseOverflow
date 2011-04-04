@@ -419,7 +419,8 @@
 
 			$message_id = $message_info->{"message_id"};
 			$message_from = $message_info->{"from"};
-			$author_netid = $message_from["email"];
+			$author_email = $message_from["email"];
+			$author_netid = substr($author_email,0,strpos($author_email,"@"));
 			print_r($author_netid);		
 	
 			$json = getJSONFromAPI("?action=get_votes&message_id=".$message_id);
