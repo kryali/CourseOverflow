@@ -51,7 +51,7 @@ if($action == "submit_vote"){
 
 }else if($action == "get_reputation"){
 
-	$netid = cleanInput($_GET['netid']);
+	$netid = cleanInput($_GET['author_netid']);
 	$reputation = get_reputation($netid);
 	outputResults("get_reputation",$reputation);
 

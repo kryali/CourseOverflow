@@ -429,7 +429,7 @@
 			print_r($json);
 			$voteCount = count($json);
 
-			$json = getJSONFromAPI("?action=get_reputation&netid=".$author_netid);
+			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&pass=".$pass."&author_netid=".$author_netid);
 			$authorRep = $json;
 
 			$is_first = ($count == 0)?1:0;
