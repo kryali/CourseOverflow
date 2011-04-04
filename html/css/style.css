@@ -201,7 +201,7 @@ ul#subheader {
 #subheader li{
 	display: inline;
 	z-index: 100;
-	padding: 5px 5px 5px 0;
+	padding: 5px 25px 5px 0;
 }
 #subheader li a:hover {
 
