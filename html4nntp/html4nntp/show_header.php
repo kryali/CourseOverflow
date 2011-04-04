@@ -422,6 +422,9 @@
 			print_r($json);
 			$voteCount = 0;
 
+			$json = getJSONFromAPI("?action=get_reputation&netid=".$author_netid);
+			$authorRep = 0;
+
 			$is_first = ($count == 0)?1:0;
 			$is_last = ($count == $last_index)?1:0;
 			
@@ -496,7 +499,7 @@
 			} else {
 				echo htmlentities(chop_str($message_info->from["name"], $sender_length_limit));
 			}
-			echo "</td>\r\n";
+			echo " (".$authorRep.")</td>\r\n";
 
 			echo "<td class=\"msg-date".($display_counter%2+1)."\">".format_date($message_info->date)."</td>\r\n";
 
