@@ -11,13 +11,7 @@ if(empty($action)){
 	exit;
 }
 
-
-if($action != "authenticate" && !isset($_SESSION['auth'])){
-	outputBoolean($action,false,"Not authenticated.");
-	exit;
-}
-
-if($action == "authenticate"){
+if($action == "authenticate" || !isset($_SESSION['auth'])){
 	
 	$netid = cleanInput($_POST['netid']);
 	$password = cleanInput($_POST['password']);
@@ -26,12 +20,17 @@ if($action == "authenticate"){
 		$password = cleanInput($_GET['password']);
 	}   
 
- 
     	$ret = authenticate($netid,$password);
 	
-	outputBoolean("authenticate",$ret);
-	
-}else if($action == "submit_vote"){
+	if(!$ret){
+		outputBoolean($action,$ret,"Not authenticated");
+		exit;
+	}elseif($action == "authenticate"){
+		outputBoolean($action,$ret);
+	}
+}
+
+if($action == "submit_vote"){
 
 	$message_id = cleanInput($_GET['message_id']);
 	$direction = cleanInput($_GET['direction']);

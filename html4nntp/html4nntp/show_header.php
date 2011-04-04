@@ -410,20 +410,22 @@
 		global $subject_length_limit;
 		global $sender_length_limit;
 
+		global $user,$pass;
+
+
 		$count = 0;
 		$last_index = sizeof($nodes) - 1;
 		$old_indent = $indent;
 		foreach ($nodes as $node) {
 			$message_info = $node->get_message_info();
 
-
+			// By BRYAN MISHKIN: Prepare data on this post
 			$message_id = $message_info->{"message_id"};
 			$message_from = $message_info->{"from"};
 			$author_email = $message_from["email"];
 			$author_netid = substr($author_email,0,strpos($author_email,"@"));
-			print_r($author_netid);		
 	
-			$json = getJSONFromAPI("?action=get_votes&message_id=".$message_id);
+			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&pass=".$pass."&message_id=".$message_id);
 			print_r($json);
 			$voteCount = 0;
 
