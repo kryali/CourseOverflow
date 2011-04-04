@@ -18,13 +18,13 @@ function showHelp($error)
 	
 	echo '<table>';
 	echo '<tr><th>action</th><th>return</th><th>param1 (GET)</th><th>param2 (GET)</th></tr>';
-	echo '<tr><td>authenticate</td><td>bool</td><td>str - netid (POST)</td><td>str - password (POST)</td></tr>';
+	echo '<tr><td>authenticate</td><td>bool</td><td>str - netid (GET/POST)</td><td>str - password (GET/POST)</td></tr>';
 	echo '<tr><td>submit_vote</td><td>bool</td><td>str - message_id</td><td>bool - direction</td></tr>';
 	echo '<tr><td>get_votes</td><td>array - list of votes on a post</td><td>str - message_id</td><td>&nbsp;</td></tr>';
-	echo '<tr><td>get_reputation</td><td>int - reputation of a user</td><td>str - netid</td><td>&nbsp;</td></tr>';
+	echo '<tr><td>get_reputation</td><td>int - reputation of a user</td><td>str - their_netid</td><td>&nbsp;</td></tr>';
 	echo '<tr><td>subscribe_to_class</td><td>bool</td><td>str - fully_qualified_class_name</td><td>&nbsp;</td></tr>';
 	echo '<tr><td>unsubscribe_from_class</td><td>bool</td><td>str - fully_qualified_class_name</td><td>&nbsp;</td></tr>';
-	echo '<tr><td>get_subscriptions</td><td>array - list of groups that a user is subscribed to</td><td>str - netid</td><td>&nbsp;</td></tr>';
+	echo '<tr><td>get_subscriptions</td><td>array - list of groups that a user is subscribed to</td><td>str - their_netid</td><td>&nbsp;</td></tr>';
 	echo '</table>';
 	
 	echo '<br /><br /><form method="post" action="?action=authenticate">';

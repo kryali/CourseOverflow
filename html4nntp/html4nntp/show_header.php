@@ -410,17 +410,29 @@
 		global $subject_length_limit;
 		global $sender_length_limit;
 
+		global $user,$pass;
+
+
 		$count = 0;
 		$last_index = sizeof($nodes) - 1;
 		$old_indent = $indent;
 		foreach ($nodes as $node) {
 			$message_info = $node->get_message_info();
 
-
+			// By BRYAN MISHKIN: Prepare data on this post
 			$message_id = $message_info->{"message_id"};
-			$json = getJSONFromAPI("?action=get_votes&message_id=".$message_id);
-			print_r($json);
-			$voteCount = 0;
+			$message_from = $message_info->{"from"};
+			$author_email = $message_from["email"];
+			$author_netid = substr($author_email,0,strpos($author_email,"@"));
+	
+			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&password=".$pass."&message_id=".$message_id);
+			$voteCount = count($json->{"response"});
+
+			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&their_netid=".$author_netid);
+			$authorRep = $json->{"response"};
+			if($authorRep == null){
+				$authorRep = 0;
+			}
 
 			$is_first = ($count == 0)?1:0;
 			$is_last = ($count == $last_index)?1:0;
@@ -496,7 +508,7 @@
 			} else {
 				echo htmlentities(chop_str($message_info->from["name"], $sender_length_limit));
 			}
-			echo "</td>\r\n";
+			echo " (".$authorRep.")</td>\r\n";
 
 			echo "<td class=\"msg-date".($display_counter%2+1)."\">".format_date($message_info->date)."</td>\r\n";
 
