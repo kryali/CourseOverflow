@@ -431,6 +431,9 @@
 
 			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&pass=".$pass."&author_netid=".$author_netid);
 			$authorRep = $json;
+			if($authorRep == null){
+				$authorRep = 0;
+			}
 
 			$is_first = ($count == 0)?1:0;
 			$is_last = ($count == $last_index)?1:0;
