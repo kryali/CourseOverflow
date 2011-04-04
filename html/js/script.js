@@ -1,8 +1,32 @@
 if(jQuery){
+	
 	$('a#top').each(function(index){ 
 		$(this).click(function(){	
 			this.children[0].innerHTML=(parseInt(this.children[0].innerHTML)+1);	
 		});
+	});
+	
+	console.log($('#displayform'));
+	
+	$('#displayform').hide();
+	$('#darken').hide();
+	$('#displayform').dialog({
+		autoOpen: false,
+		modal:true,
+		width: 500,
+		height: 350,
+		title: 'Compose a Message',
+		buttons: {
+			"Post message": function(){
+				$( this ).dialog( "close" );
+				$('#darken').hide();
+			}
+		}
+	});
+	
+	$('.compose').click(function(){
+		$('#darken').show();
+		$('#displayform').dialog("open");
 	});
 	
 	$('#topic-list li').each(function(index){
