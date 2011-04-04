@@ -9,7 +9,6 @@ if(jQuery){
 	console.log($('#displayform'));
 	
 	$('#displayform').hide();
-	$('#darken').hide();
 	$('#displayform').dialog({
 		autoOpen: false,
 		modal:true,
@@ -18,14 +17,17 @@ if(jQuery){
 		title: 'Compose a Message',
 		buttons: {
 			"Post message": function(){
+				console.log($('.subject')[0].value);
+				console.log($('.message')[0].value);
+				var inject = '<li><a href="#" id="top"><div id="up">1</div></a><a href="#" class="topic-title">'+$('.subject')[0].value+'</a><p>'+ $('.message')[0].value +'</p><div id="bar"><div id="comments">0</div>	<a href="#" class="more">read more</a><div id="user"><span class="time">just now</span><span class="username">ryali1</span><span class="reputation">48</span></div></div></li>';
+				console.log(inject);
+				$('#topic-list').prepend(inject);
 				$( this ).dialog( "close" );
-				$('#darken').hide();
 			}
 		}
 	});
 	
 	$('.compose').click(function(){
-		$('#darken').show();
 		$('#displayform').dialog("open");
 	});
 	
