@@ -27,7 +27,7 @@ function showHelp($error)
 	echo '<tr><td>get_subscriptions</td><td>array - list of groups that a user is subscribed to</td><td>str - netid</td><td>&nbsp;</td></tr>';
 	echo '</table>';
 	
-	echo '<form method="post" action="?action=authenticate">';
+	echo '<br /><br /><form method="post" action="?action=authenticate">';
 	echo '<h3>Quick Login</h3>';
 	if(isset($_SESSION["netid"])){
 		echo '<p>(currently logged in as '.$_SESSION['netid'].')</p>';
