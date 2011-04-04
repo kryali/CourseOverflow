@@ -426,10 +426,10 @@
 			$author_netid = substr($author_email,0,strpos($author_email,"@"));
 	
 			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&password=".$pass."&message_id=".$message_id);
-			print_r($json);
 			$voteCount = count($json);
 
 			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&author_netid=".$author_netid);
+			print_r($json);
 			$authorRep = $json;
 			if($authorRep == null){
 				$authorRep = 0;
