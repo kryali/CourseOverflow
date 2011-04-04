@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><!--link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"--> 
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+	
 </head>
 <body>
+	<div id="displayform">
+		<form action="" class="compose-form">
+			<input type="text" class="subject" placeholder="Subject" /><br/>
+			<textarea class="message" placeholder="Your Message"></textarea>
+		</form>
+	</div>
+	
 	<header>
 		<a href="#" id="logo">Course<span class="thirty">Overflow</span></a>
 		<nav>
 			<ul id="nav">
-				<li><a href="#">Compose</a></li>
+				<li><a href="#" class="compose">Compose</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Groups</a></li>
 			</ul>
@@ -28,7 +37,7 @@
 	<section>
 		<header id="content-header">
 			<form action="" class="searchform">
-				<input type="text" class="searchfield" value="Search.." />
+				<input type="text" class="searchfield" placeholder="Search.." />
 				<input type="submit" class="searchbutton" value=""/>
 			</form>
 			<h3>Discussions</h3>
