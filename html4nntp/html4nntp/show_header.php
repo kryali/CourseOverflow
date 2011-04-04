@@ -427,10 +427,10 @@
 	
 			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&pass=".$pass."&message_id=".$message_id);
 			print_r($json);
-			$voteCount = 0;
+			$voteCount = count($json);
 
 			$json = getJSONFromAPI("?action=get_reputation&netid=".$author_netid);
-			$authorRep = 0;
+			$authorRep = $json;
 
 			$is_first = ($count == 0)?1:0;
 			$is_last = ($count == $last_index)?1:0;
