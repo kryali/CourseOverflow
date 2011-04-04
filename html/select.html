@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head><!--link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"--> 
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+	
+</head>
+<body>
+	<div id="displayform">
+		<form action="" class="compose-form">
+			<input type="text" class="subject" placeholder="Subject" /><br/>
+			<textarea class="message" placeholder="Your Message"></textarea>
+		</form>
+	</div>
+	
+	<header>
+		<a href="#" id="logo">Course<span class="thirty">Overflow</span></a>
+		<nav>
+			<ul id="nav">
+				<li><a href="#" class="compose">Compose</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Groups</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<div id="sidebar">
+		<ul>
+			<li><a href="#">cs242sp11</a></li>
+			<li><a href="#" class="sidebar-selected">cs231sp11</a></li>
+			<li><a href="#">cs431sp11</a></li>
+			<li><a href="#" class="add">add group</a></li>
+		</ul>
+	</div>
+	
+	<section>
+		<header id="content-header">
+			<form action="" class="searchform">
+				<input type="text" class="searchfield" placeholder="Search.." />
+				<input type="submit" class="searchbutton" value=""/>
+			</form>
+			<h3>12 People viewing</h3>
+			
+		</header>
+		<ol id="topic-list">
+			<li>
+				<a href="#" id="top">
+					<div id="up">3</div></a>
+				<a href="#" class="topic-title">Select</a>
+				<p>
+				We use select to wait for the mmap'ed camera buffers to have data. I
+				believe that every time we first run our program select timeouts, and
+				then every once in awhile select kills </p>
+				
+				<div id="bar">
+					<div id="comments">4</div>
+					<a href="#" class="more">read more</a>
+					<div id="user"><span class="time">4hr ago</span><span class="username">john1</span><span class="reputation">4</span></div>
+				</div>
+			</li>
+			
+			<li class="right30">
+				<a href="#" id="top">
+					<div id="up">4</div></a>
+				<p>
+					Are you running select on a thread on a global variable? I had a similar issue where select was accessing a bad address. I would suggest passing in the socket to select so you don't run into any scope issues. Hope that was helpful!
+				</p>
+
+				<div id="bar">
+					<div id="user"><span class="time">15m ago</span><span class="username">hughes1</span><span class="reputation">4</span></div>
+				</div>
+			</li>
+			<li class="right60">
+				<a href="#" id="top">
+					<div id="up">1</div></a>
+				<p> That fixed it, thanks! </p>
+
+				<div id="bar">
+					<div id="user"><span class="time">just now</span><span class="username">john1</span><span class="reputation">4</span></div>
+				</div>
+			</li>
+				<li class="right30">
+					<a href="#" id="top">
+						<div id="up">1</div></a>
+					<p>any more information?
+
+					The first select time out may be because the device is not ready. But if the select kills your program, there
+					might be some error code?
+
+					You haven't had this problem before in MP1?</p>
+					
+					<div id="bar">
+						<div id="user"><span class="time">44m ago</span><span class="username">shushi</span><span class="reputation">4,318</span></div>
+					</div>
+				</li>
+				
+				
+				<li class="right60">
+					<a href="#" id="top">
+						<div id="up">1</div></a>
+					<p>We didn't have this problem in MP1, however I think that it may be related to the network packets. Here's a link to our code. Line in question is number 10. <a href="">link</a></p>
+
+					<div id="bar">
+						<div id="user"><span class="time">35m ago</span><span class="username">john1</span><span class="reputation">4</span></div>
+					</div>
+				</li>
+				
+				
+		</ol>
+	</section>
+		<script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
