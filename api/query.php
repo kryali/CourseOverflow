@@ -21,7 +21,12 @@ if($action == "authenticate"){
 	
 	$netid = cleanInput($_POST['netid']);
 	$password = cleanInput($_POST['password']);
-    
+	if(empty($netid) && empty($password)){
+		$netid = cleanInput($_GET['netid']);
+		$password = cleanInput($_GET['password']);
+	}   
+
+ 
     	$ret = authenticate($netid,$password);
 	
 	outputBoolean("authenticate",$ret);

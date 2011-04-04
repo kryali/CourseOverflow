@@ -54,6 +54,22 @@ $MIME_TYPE_MAP = array("txt"=>"text/plain",
 						"xls"=>"application/vnd.ms-excel",
 						"ppt"=>"application/vnd.ms-powerpoint");
 
+
+// By Bryan Mishkin: Get a JSON object from the API given GET url parameters
+function getJSONFromAPI($query)
+{
+	if(empty($query)){
+		return null;
+	}
+
+	$page = file_get_contents("http://courseoverflow.web.cs.illinois.edu/CourseOverflow/api/".$query);
+	if(!empty($page)){
+		return json_decode($page);
+	}
+	
+	return null;
+}
+
 function getIP() {
 	if ($_SERVER[HTTP_X_FORWARDED_FOR]!="") return($_SERVER[HTTP_X_FORWARDED_FOR]);
 	return($_SERVER[REMOTE_ADDR]);

@@ -123,6 +123,10 @@
 	// Create the NNTP object
 	$nntp = new NNTP($nntp_server, $user, $pass, $proxy_server, $proxy_port, $proxy_user, $proxy_pass);
 
+
+	// Authenticate with CourseOverflow API
+	$json = getJSONFromAPI("?action=authenticate&netid=".$user."&password=".$pass);
+
 	// Load the newsgroups_list
 	$connected = FALSE;
 	if (!isset($_SESSION["newsgroups_list"])) {	// Need to update the newsgroups_list first
