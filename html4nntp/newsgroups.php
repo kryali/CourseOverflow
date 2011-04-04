@@ -126,7 +126,6 @@
 
 	// Authenticate with CourseOverflow API
 	$json = getJSONFromAPI("?action=authenticate&netid=".$user."&password=".$pass);
-	echo "?action=authenticate&netid=".$user."&password=".$pass;
  	print_r($json);
 
 	// Load the newsgroups_list
