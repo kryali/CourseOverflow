@@ -4,23 +4,25 @@ require_once("query_helpers.php");
 
 // GET variables
 $action = cleanInput($_GET['action']);
+session_start();
 
 if(empty($action)){
 	showHelp("No action provided.");
 	exit;
 }
 
+
 if($action != "authenticate" && !isset($_SESSION['auth'])){
-	showHelp("Not authenticated.");
+	outputBoolean($action,false,"Not authenticated.");
 	exit;
 }
 
 if($action == "authenticate"){
 	
-	$email = cleanInput($_POST['username']);
+	$netid = cleanInput($_POST['netid']);
 	$password = cleanInput($_POST['password']);
     
-    $ret = authenticate($email,$password);
+    	$ret = authenticate($netid,$password);
 	
 	outputBoolean("authenticate",$ret);
 	
@@ -28,6 +30,12 @@ if($action == "authenticate"){
 
 	$message_id = cleanInput($_GET['message_id']);
 	$direction = cleanInput($_GET['direction']);
+	if(empty($direction) || $direction == "1" || strtolower($direction) == "true" || strtolower($direction) == "up"){
+		$direction = true;
+	}else{
+		$direction = false;
+	}
+
 	$ret = submit_vote($message_id,$direction);
 	outputBoolean("submit_vote",$ret);
 
@@ -39,8 +47,8 @@ if($action == "authenticate"){
 
 }else if($action == "get_reputation"){
 
-	$email = cleanInput($_GET['email']);
-	$reputation = get_reputation($email);
+	$netid = cleanInput($_GET['netid']);
+	$reputation = get_reputation($netid);
 	outputResults("get_reputation",$reputation);
 
 }else if($action == "subscribe_to_class"){
@@ -57,9 +65,12 @@ if($action == "authenticate"){
 
 }else if($action == "get_subscriptions"){
 	
-	$email = cleanInput($_GET['email']);
-	$subscriptions = get_subscriptions($email);
+	$netid = cleanInput($_GET['netid']);
+	$subscriptions = get_subscriptions($netid);
 	outputResults("get_subscriptions",$subscriptions);
+}else{
+	outputBoolean($action,false,"Invalid action.");
+	exit;
 }
 
 ?>

@@ -4,19 +4,21 @@ include("db_connect.php");
 include("html4nntp/nntp.php");
 include("./api_config.php");
 
-function authenticate($email, $password){
+function authenticate($netid, $password){
     
-    if(!verify_login($email, $password))
-        return false;
+    if(!verify_login($netid, $password)){
+        session_destroy();
+	return false;
+    }
 
-    $query  = "INSERT INTO Users(email) Values(";
-    $query .= "'" . mysql_real_escape_string($email) . "'";
+    $query  = "INSERT INTO Users(netid) Values(";
+    $query .= "'" . mysql_real_escape_string($netid) . "'";
     $query .= ");";
 
     mysql_query($query);
 
-    session_start();
-    $_SESSION["email"] = $email;
+    $_SESSION["netid"] = $netid;
+    $_SESSION["password"] = $password;
     $_SESSION["auth"]  = true; 
     
     return true;
@@ -24,12 +26,12 @@ function authenticate($email, $password){
 
 function submit_vote($message_id, $positive){
 
-    if(!isset($_SESSION["email"]))
+    if(!isset($_SESSION["netid"]))
         return false;
 
     //Check for duplicate votes
     $query  = "SELECT * FROM Votes WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($_SESSION["email"]) . "' AND ";
+    $query .= "netid = '" . mysql_real_escape_string($_SESSION["netid"]) . "' AND ";
     $query .= "message_id = '" . mysql_real_escape_string($message_id) . "'";
     $query .= ";";
 
@@ -49,7 +51,7 @@ function submit_vote($message_id, $positive){
             return false;
 
         $query  = "DELETE FROM Votes WHERE ";
-        $query .= "email = '" . mysql_real_escape_string($_SESSION["email"]) . "' AND ";
+        $query .= "netid = '" . mysql_real_escape_string($_SESSION["netid"]) . "' AND ";
         $query .= "message_id = '" . mysql_real_escape_string($message_id) . "'";
         $query .= ";";
         
@@ -58,10 +60,16 @@ function submit_vote($message_id, $positive){
         if(!$result)
             return false;
     }
+    // update reputation
+    $author_email = get_author_email($message_id);
+    $author_netid = substr($author_email,0,strpos($author_email,"@"));
+    mysql_query("INSERT INTO Users(netid) VALUES ('$author_netid')");
+    echo "<p>Author netid of $message_id is $author_netid</p>"; 
+    mysql_query("UPDATE Users SET reputation = reputation + $positive WHERE netid = '$author_netid' LIMIT 1");	
 
     //Insert the new vote
     $query  = "INSERT INTO Votes Values( ";
-    $query .= "'" . mysql_real_escape_string($_SESSION["email"]) . "', ";
+    $query .= "'" . mysql_real_escape_string($_SESSION["netid"]) . "', ";
     $query .= "'" . mysql_real_escape_string($message_id) . "', ";
 
     if($positive)
@@ -77,44 +85,57 @@ function submit_vote($message_id, $positive){
 
     return true;
 
-    //TODO Update reputation
 }
 
 function get_votes($message_id){
     
-    $query  = "SELECT * FROM Votes WHERE ";
+    $query  = "SELECT netid,positive as direction FROM Votes WHERE ";
     $query .= "message_id = '" . mysql_real_escape_string($message_id) . "'";
     $query .= ";";
 
     $result = mysql_query($query);
+    if(!$result){
+	return NULL;
+    }
 
-    return $result;
+    $num_results = mysql_num_rows($result);
+    if($num_results == 0){
+	return NULL;
+    }
+    
+    $arr = array();
+    for($ind = 0; $ind < $num_results; $ind++){
+	$row = mysql_fetch_array($result);
+	$arr[] = $row;
+    }
+
+
+    return $arr;
 }
 
-function get_reputation($email_address){
+function get_reputation($netid_address){
     
     $query  = "SELECT reputation FROM Users WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($email_address) . "'";
+    $query .= "netid = '" . mysql_real_escape_string($netid_address) . "'";
     $query .= ";";
 
     $result = mysql_query($query);
 
-    if(!$result)
+    if(!$result || mysql_num_rows($result) == 0)
         return -1;
 
     $value = mysql_fetch_assoc($result);
-    print_r($value);
 
     return $value["reputation"];
 }
 
 function subscribe_to_class($class_name){
 
-    if(!isset($_SESSION["email"]))
+    if(!isset($_SESSION["netid"]))
         return false;
 
     $query  = "INSERT INTO Subscriptions Values(";
-    $query .= "'" . mysql_real_escape_string($_SESSION['email']) . "', ";
+    $query .= "'" . mysql_real_escape_string($_SESSION['netid']) . "', ";
     $query .= "'" . mysql_real_escape_string($class_name) . "'";
     $query .= ");";
 
@@ -127,28 +148,43 @@ function subscribe_to_class($class_name){
 
 function unsubscribe_from_class($class_name){
 
-    if(!isset($_SESSION["email"]))
+    if(!isset($_SESSION["netid"]))
         return false;
 
     $query  = "DELETE FROM Subscriptions WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($_SESSION['email']) . "' AND ";
+    $query .= "netid = '" . mysql_real_escape_string($_SESSION['netid']) . "' AND ";
     $query .= "subname = '" . mysql_real_escape_string($class_name) . "'";
     $query .= ";";
 
     $result = mysql_query($query);
 
-    if(!$result)
+    if(!$result || mysql_affected_rows() == 0)
         return false;
     return true;
 }
 
-function get_subscriptions($email_address){
-    $query  = "SELECT * FROM Subscriptions WHERE ";
-    $query .= "email = '" . mysql_real_escape_string($email_address) . "'";
+function get_subscriptions($netid_address){
+    $query  = "SELECT subname FROM Subscriptions WHERE ";
+    $query .= "netid = '" . mysql_real_escape_string($netid_address) . "'";
     $query .= ";";
 
     $result = mysql_query($query);
-    return $result;
+    if(!$result){
+	return null;
+    }
+ 
+    $num_results = mysql_num_rows($result);
+    if($num_results == 0){
+	return null;
+    }
+
+    $arr = array();
+    for($ind = 0; $ind < $num_results; $ind++){
+	$row = mysql_fetch_array($result);
+	$arr[] = $row;
+    }
+
+    return $arr;
 }
 
 ?>
