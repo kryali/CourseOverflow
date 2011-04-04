@@ -417,8 +417,9 @@
 			$message_info = $node->get_message_info();
 
 
-			$json = getJSONFromAPI("?action=get_votes&message_id="."");
-			print_r($message_info);
+			$message_id = $message_info->{"message_id"};
+			$json = getJSONFromAPI("?action=get_votes&message_id=".$message_id);
+			print_r($json);
 			$voteCount = 0;
 
 			$is_first = ($count == 0)?1:0;
