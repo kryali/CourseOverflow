@@ -504,8 +504,8 @@
 			echo "<td class=\"msg-mail".($display_counter%2+1)."\">\r\n";
 			if ($_SESSION["auth"]) {
 				// Encode email
-				list($user,$host) = split("@", $message_info->from["email"]);
-				if ((is_requested("post") || $_SESSION["auth"])) HideEmail(htmlentities($user), $host, chop_str($message_info->from["name"], $sender_length_limit));
+				list($this_user,$host) = split("@", $message_info->from["email"]);
+				if ((is_requested("post") || $_SESSION["auth"])) HideEmail(htmlentities($this_user), $host, chop_str($message_info->from["name"], $sender_length_limit));
 				else htmlentities(chop_str($message_info->from["name"], $sender_length_limit));
 			} else {
 				echo htmlentities(chop_str($message_info->from["name"], $sender_length_limit));
