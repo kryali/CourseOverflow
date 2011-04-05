@@ -52,7 +52,7 @@ ob_start(); ?>
 	<script type="text/javascript">
 	function vote(message_id){
 		loadXMLDoc("http://courseoverflow.web.cs.illinois.edu/CourseOverflow/api/?action=submit_vote&message_id="+message_id);
-		document.getElementByID("count_"+message_id).innerHTML = parseInt(document.getElementByID("count_"+message_id).innerHTML) + 1;
+		document.getElementById("count_"+message_id).innerHTML = parseInt(document.getElementByID("count_"+message_id).innerHTML) + 1;
 	};
 
       	function loadXMLDoc(url){
