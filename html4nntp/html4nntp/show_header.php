@@ -442,7 +442,7 @@
 			}elseif($author_netid == $user){
 				$voteIconHTML = "<img src=\"images/thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You can't vote on your own post!\" />";
 			}else{
-				$voteIconHTML = "<img src=\"images/thumbsup.jpeg\" height=\"15px\" width=\"15px\" title=\"Vote up!\" />";
+				$voteIconHTML = "<a href=\"#\"><img src=\"images/thumbsup.jpeg\" height=\"15px\" width=\"15px\" title=\"Vote up!\" /></a>";
 			}
 
 			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&their_netid=".$author_netid);
