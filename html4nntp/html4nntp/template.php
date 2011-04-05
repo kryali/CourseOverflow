@@ -49,6 +49,36 @@ ob_start(); ?>
 			margin-right: 30px;
 		}
 	</style>
+	<script type="text/javascript">
+	function vote(message_id){
+		loadXMLDoc("http://courseoverflow.web.cs.illinois.edu/CourseOverflow/api/?action=submit_vote&message_id="+message_id);
+		document.getElementByID("count_"+message_id).innerHTML = parseInt(document.getElementByID("count_"+message_id).innerHTML) + 1;
+	};
+
+      	function loadXMLDoc(url){
+		var xmlhttp;
+		if (window.XMLHttpRequest)
+	 	 {// code for IE7+, Firefox, Chrome, Opera, Safari
+	 	 	xmlhttp=new XMLHttpRequest();
+	 	 }
+		else
+	 	 {// code for IE6, IE5
+	 	 	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	 	 }
+	 
+        	xmlhttp.onreadystatechange=function()
+	  	{
+	   	 	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	   	 	{
+	    		document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	    		}
+	 	}
+		xmlhttp.open("GET",url,true);
+		xmlhttp.send();
+	}
+	
+
+	</script>
 </head>
 <body <?php if (isset($on_load_script)) {echo "onLoad=\"$on_load_script\"";} ?>>
 	<div class="maintitle"><?=$messages_ini["text"]["header1"]; ?></div>
