@@ -439,7 +439,7 @@
 
 			if($voted){
 				$voteIconHTML = "<img src=\"thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You voted up!\" />";
-			}else($author_netid == $user){
+			}elseif($author_netid == $user){
 				$voteIconHTML = "<img src=\"thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You can't vote on your own post!\" />";
 			}else{
 				$voteIconHTML = "<img src=\"thumbsup.jpeg\" height=\"15px\" width=\"15px\" title=\"Vote up!\" />";
