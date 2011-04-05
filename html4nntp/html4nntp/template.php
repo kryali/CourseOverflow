@@ -53,6 +53,7 @@ ob_start(); ?>
 	function vote(message_id){
 		loadXMLDoc("http://courseoverflow.web.cs.illinois.edu/CourseOverflow/api/?action=submit_vote&message_id="+message_id);
 		document.getElementById("count_"+message_id).innerHTML = parseInt(document.getElementById("count_"+message_id).innerHTML) + 1;
+		document.getElementById("image_"+message_id).innerHTML = "<img src=\"images/thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You voted up!\" />";
 	};
 
       	function loadXMLDoc(url){
