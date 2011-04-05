@@ -424,10 +424,19 @@
 			$message_from = $message_info->{"from"};
 			$author_email = $message_from["email"];
 			$author_netid = substr($author_email,0,strpos($author_email,"@"));
-	
+			
+			// check if user voted on this post yet	
 			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&password=".$pass."&message_id=".$message_id);
 			$voteCount = count($json->{"response"});
 			$voted = false;
+			for($ind = 0; $ind < count($json->{"response"}; $ind++){
+				if($json->{"response"}[$ind]->{"netid"} == $user){
+					$voted = true;
+					break;
+				}
+			}
+
+
 			if($voted){
 				$voteIconHTML = "<img src=\"thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You Voted Up\" />";
 			}else{
