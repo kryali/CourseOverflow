@@ -442,7 +442,7 @@
 			}elseif($author_netid == $user){
 				$voteIconHTML = "<img src=\"images/thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You can't vote on your own post!\" />";
 			}else{
-				$voteIconHTML = "<a onclick=\"vote(".$message_id.");return false;\" href=\"#\"><img src=\"images/thumbsup.jpeg\" height=\"15px\" width=\"15px\" title=\"Vote up!\" /></a>";
+				$voteIconHTML = "<a onclick=\"vote('".$message_id."');return false;\" href=\"#\"><img src=\"images/thumbsup.jpeg\" height=\"15px\" width=\"15px\" title=\"Vote up!\" /></a>";
 			}
 
 			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&their_netid=".$author_netid);
@@ -511,7 +511,7 @@
 			if ((isset($_REQUEST["article_id"])) && ($_REQUEST["article_id"]==$message_info->nntp_message_id)) {
 				echo "<span class=\"msg-title\">".$voteIconHTML." <strong>(+".$voteCount.") ".htmlentities(chop_str($message_info->subject, $subject_length_limit - $level*3))."</strong></span>\r\n";
 			} else {
-				echo "<span class=\"msg-title\">".$voteIconHTML." (+".$voteCount.") <a href=\"".basename($_SERVER["SCRIPT_NAME"])."?art_group=".urlencode($_SESSION["newsgroup"])."&amp;article_id=".$message_info->nntp_message_id."\">";
+				echo "<span class=\"msg-title\">".$voteIconHTML." (+<span id=\"count_".$message_id."\">".$voteCount."</span>) <a href=\"".basename($_SERVER["SCRIPT_NAME"])."?art_group=".urlencode($_SESSION["newsgroup"])."&amp;article_id=".$message_info->nntp_message_id."\">";
 				echo htmlentities(chop_str($message_info->subject, $subject_length_limit - $level*3))."</a></span>\r\n";
 			}
 			echo "</td>\r\n";
