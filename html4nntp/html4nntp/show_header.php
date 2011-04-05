@@ -438,9 +438,11 @@
 
 
 			if($voted){
-				$voteIconHTML = "<img src=\"thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You Voted Up\" />";
+				$voteIconHTML = "<img src=\"thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You voted up!\" />";
+			}else($author_netid == $user){
+				$voteIconHTML = "<img src=\"thumbsup_disabled.jpeg\" height=\"15px\" width=\"15px\" title=\"You can't vote on your own post!\" />";
 			}else{
-				$voteIconHTML = "<img src=\"thumbsup.jpeg\" height=\"15px\" width=\"15px\" title=\"Vote Up!\" />";
+				$voteIconHTML = "<img src=\"thumbsup.jpeg\" height=\"15px\" width=\"15px\" title=\"Vote up!\" />";
 			}
 
 			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&their_netid=".$author_netid);
