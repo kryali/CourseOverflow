@@ -121,7 +121,7 @@ function get_reputation($netid_address){
     $result = mysql_query($query);
 
     if(!$result || mysql_num_rows($result) == 0)
-        return -1;
+        return 0;
 
     $value = mysql_fetch_assoc($result);
 
