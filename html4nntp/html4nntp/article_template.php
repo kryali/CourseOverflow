@@ -51,9 +51,9 @@
 		<li><span class="label"><?=$messages_ini["text"]["subject"] ?>:</span> <span class="data"><?=htmlentities($header["subject"]) ?></span></li>
 		<li><span class="label"><?=$messages_ini["text"]["from"] ?>:</span> <span class="data"><?php
 			echo htmlescape($header["from"]["name"])." ";
-			list($user,$host) = split("@", $header["from"]["email"]);
+			list($the_user,$host) = split("@", $header["from"]["email"]);
 			if ((is_requested("post") || $_SESSION["auth"])) echo "&lt;";
-			if ((is_requested("post") || $_SESSION["auth"])) HideEmail(htmlentities($user), $host);
+			if ((is_requested("post") || $_SESSION["auth"])) HideEmail(htmlentities($the_user), $host);
 			if ((is_requested("post") || $_SESSION["auth"])) echo "&gt;"; ?>
 		</span></li>
 		<li><span class="label"><?=$messages_ini["text"]["date"] ?>:</span> <span class="data"><?=htmlentities($header["date"]) ?></span></li>
