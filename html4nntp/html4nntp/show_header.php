@@ -426,8 +426,6 @@
 			$author_netid = substr($author_email,0,strpos($author_email,"@"));
 	
 			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&password=".$pass."&message_id=".$message_id);
-			print_r($json);
-			echo "?action=get_votes&netid=".$user."&password=".$pass."&message_id=".$message_id;
 			$voteCount = count($json->{"response"});
 
 			$json = getJSONFromAPI("?action=get_reputation&netid=".$user."&password=".$pass."&their_netid=".$author_netid);
