@@ -509,7 +509,7 @@
 			echo "<span class=\"msg-tree\"><a name=\"".$message_info->nntp_message_id."\" ></a>";
 			echo "$old_indent$sign<img src=\"".$image_base."message.gif\" width=\"13\" height=\"13\" alt=\"#\" /></span>";
 			if ((isset($_REQUEST["article_id"])) && ($_REQUEST["article_id"]==$message_info->nntp_message_id)) {
-				echo "<span class=\"msg-title\">".$voteIconHTML." <strong>(+".$voteCount.")".htmlentities(chop_str($message_info->subject, $subject_length_limit - $level*3))."</strong></span>\r\n";
+				echo "<span class=\"msg-title\">".$voteIconHTML." <strong>(+".$voteCount.") ".htmlentities(chop_str($message_info->subject, $subject_length_limit - $level*3))."</strong></span>\r\n";
 			} else {
 				echo "<span class=\"msg-title\">".$voteIconHTML." (+".$voteCount.") <a href=\"".basename($_SERVER["SCRIPT_NAME"])."?art_group=".urlencode($_SESSION["newsgroup"])."&amp;article_id=".$message_info->nntp_message_id."\">";
 				echo htmlentities(chop_str($message_info->subject, $subject_length_limit - $level*3))."</a></span>\r\n";
