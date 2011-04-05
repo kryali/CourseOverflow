@@ -429,7 +429,7 @@
 			$json = getJSONFromAPI("?action=get_votes&netid=".$user."&password=".$pass."&message_id=".$message_id);
 			$voteCount = count($json->{"response"});
 			$voted = false;
-			for($ind = 0; $ind < count($json->{"response"}; $ind++){
+			for($ind = 0; $ind < count($json->{"response"}); $ind++){
 				if($json->{"response"}[$ind]->{"netid"} == $user){
 					$voted = true;
 					break;
